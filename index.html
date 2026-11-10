@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conte seus hobbies e interesses e descubra carreiras em tecnologia que combinam com você." />
+  <title>CORE — Descubra sua carreira em tecnologia</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              cyan: '#38bdf8',
+              neon: '#00f0ff',
+              deep: '#060911',
+              accent: '#6366f1'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-900">
+
+  <!-- Canvas de Fundo Animado -->
+  <canvas id="fundo-animado"></canvas>
+  <div class="noise-overlay"></div>
+
+  <!-- Cabeçalho com Logo CORE -->
+  <header class="topo sticky top-0 z-50 glass-header">
+    <div class="container mx-auto px-4 sm:px-6 py-3.5 max-w-6xl flex items-center justify-between topo__conteudo">
+      <div>
+        <a href="index.html" class="marca flex items-center gap-3.5 group">
+          
+          <!-- Ícone Animado SVG - Reator CORE -->
+          <div class="relative w-11 h-11 flex items-center justify-center p-0.5 rounded-xl bg-slate-950/60 border border-cyan-500/30 shadow-[0_0_20px_rgba(56,189,248,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.45)] transition-all duration-300">
+            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9" />
+                  <stop offset="60%" stop-color="#0284c7" stop-opacity="0.5" />
+                  <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="coreCenter" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="45%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#0284c7" />
+                </radialGradient>
+              </defs>
+
+              <circle class="core-aura" cx="50" cy="50" r="44" fill="url(#coreGlow)" />
+              <circle class="core-ring-1" cx="50" cy="50" r="37" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-dasharray="60 30 15 40" />
+              <circle class="core-ring-2" cx="50" cy="50" r="26" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" stroke-dasharray="35 25 10 30" />
+              <circle class="core-nucleus" cx="50" cy="50" r="13" fill="url(#coreCenter)" />
+              <circle cx="50" cy="50" r="4" fill="#ffffff" />
+            </svg>
+          </div>
+
+          <!-- Nome da Marca "CORE" -->
+          <div class="flex flex-col">
+            <span class="font-extrabold text-2xl tracking-wider bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent group-hover:to-cyan-200 transition-colors drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">
+              CORE
+            </span>
+            <span class="text-[10px] tracking-widest text-cyan-400/80 font-bold uppercase -mt-1">Vocational Tech</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="hidden sm:block text-xs font-semibold px-3.5 py-1.5 rounded-full bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 shadow-inner">
+        <i class="fa-solid fa-atom text-cyan-400 me-1.5 animate-spin" style="animation-duration: 8s;"></i> Mapeamento Vocacional Tech
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="flex-grow py-8 sm:py-12 px-4 sm:px-6">
+    <div class="container mx-auto max-w-6xl pagina-inicial">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Coluna de Apresentação -->
+        <div class="apresentacao lg:col-span-7 space-y-8">
+
+          <div class="space-y-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-cyan-400 border border-cyan-500/20">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Plataforma CORE de Carreiras
+            </span>
+            
+            <h1 class="titulo-principal text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Descubra carreiras em tecnologia que <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]">combinam com você</span>
+            </h1>
+
+            <p class="apresentacao__texto text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Conte o que você gosta de fazer no tempo livre e o que desperta sua
+              curiosidade. Em poucos segundos você recebe um mapa de carreiras com
+              o que estudar primeiro.
+            </p>
+          </div>
+
+          <!-- Passos -->
+          <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6">
+            <h2 class="subtitulo text-xl font-bold text-cyan-300 flex items-center gap-2">
+              <i class="fa-solid fa-route text-cyan-400"></i>
+              Como funciona o Mapeamento Vocacional
+            </h2>
+
+            <ol class="passos space-y-4">
+              <li class="passo flex items-start gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center border border-cyan-500/30">1</span>
+                <span class="text-slate-200 pt-0.5 text-sm sm:text-base">Preencha seu nome, hobbies e interesses.</span>
+              </li>
+              <li class="passo flex items-start gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center border border-cyan-500/30">2</span>
+                <span class="text-slate-200 pt-0.5 text-sm sm:text-base">Nossa análise cruza suas respostas com perfis de carreira.</span>
+              </li>
+              <li class="passo flex items-start gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center border border-cyan-500/30">3</span>
+                <span class="text-slate-200 pt-0.5 text-sm sm:text-base">Você recebe as carreiras mais compatíveis e um roteiro de estudos.</span>
+              </li>
+            </ol>
+          </div>
+
+        </div>
+
+        <!-- Coluna do Formulário -->
+        <div class="cartao lg:col-span-5 w-full">
+          <div class="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500"></div>
+
+            <h2 class="subtitulo-cartao text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <i class="fa-solid fa-user-astronaut text-cyan-400"></i>
+              Seu perfil
+            </h2>
+
+            <form id="form-perfil" class="formulario space-y-5" novalidate>
+              <div class="campo space-y-2">
+                <label for="nome" class="block text-sm font-semibold text-slate-200">Nome</label>
+                <div class="relative">
+                  <input type="text" id="nome" name="nome" placeholder="Ex.: Aline Santos" required minlength="2"
+                    maxlength="60" autocomplete="name"
+                    class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder-slate-500 focus:outline-none" />
+                </div>
+                <p id="erro-nome" class="text-xs text-rose-400 hidden flex items-center gap-1 mt-1">
+                  <i class="fa-solid fa-circle-exclamation"></i> Por favor, informe um nome entre 2 e 60 caracteres.
+                </p>
+              </div>
+
+              <div class="campo space-y-2">
+                <label for="hobbies" class="block text-sm font-semibold text-slate-200">Hobbies</label>
+                <div class="relative">
+                  <textarea id="hobbies" name="hobbies" rows="3" required
+                    placeholder="Ex.: jogar videogame, desenhar, organizar eventos"
+                    class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder-slate-500 resize-none focus:outline-none"></textarea>
+                </div>
+                <div class="dica text-xs text-cyan-400/80 flex items-center gap-1.5">
+                  <i class="fa-solid fa-circle-info"></i> Separe cada hobby com vírgula.
+                </div>
+                <p id="erro-hobbies" class="text-xs text-rose-400 hidden flex items-center gap-1 mt-1">
+                  <i class="fa-solid fa-circle-exclamation"></i> Informe pelo menos um hobby válido.
+                </p>
+              </div>
+
+              <div class="campo space-y-2">
+                <label for="interesses" class="block text-sm font-semibold text-slate-200">Áreas de interesse</label>
+                <div class="relative">
+                  <textarea id="interesses" name="interesses" rows="3" required
+                    placeholder="Ex.: design de interfaces, desenvolvimento web"
+                    class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder-slate-500 resize-none focus:outline-none"></textarea>
+                </div>
+                <div class="dica text-xs text-cyan-400/80 flex items-center gap-1.5">
+                  <i class="fa-solid fa-circle-info"></i> Separe cada interesse com vírgula.
+                </div>
+                <p id="erro-interesses" class="text-xs text-rose-400 hidden flex items-center gap-1 mt-1">
+                  <i class="fa-solid fa-circle-exclamation"></i> Informe pelo menos uma área de interesse válida.
+                </p>
+              </div>
+
+              <button type="submit" id="btn-submit"
+                class="botao btn-glow w-full py-4 px-6 rounded-xl text-white font-bold text-base flex items-center justify-center gap-2 group transition-all">
+                <span id="btn-texto">Descobrir minha carreira</span>
+                <i id="btn-icone" class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="rodape border-t border-slate-800/80 py-6 glass-header mt-12">
+    <div class="container mx-auto px-4 max-w-6xl text-center text-sm text-slate-400">
+      <p>
+        Projeto acadêmico — Análise e Desenvolvimento de Sistemas.
+        <a href="resultado.html?exemplo" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 font-medium transition-colors ml-1">
+          Ver um resultado de exemplo
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal de Aviso -->
+  <dialog id="modal-aviso" class="modal glass-card p-6 sm:p-8 rounded-2xl max-w-md w-11/12 text-slate-100 shadow-2xl border border-cyan-500/30">
+    <div class="text-center space-y-4">
+      <div class="w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto text-xl border border-cyan-500/40">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h2 id="modal-titulo" class="text-xl font-bold text-white">Tente mais tarde</h2>
+      <p id="modal-mensagem" class="text-sm text-slate-300 leading-relaxed">
+        Não foi possível conectar ao serviço no momento. Por favor, tente novamente em instantes.
+      </p>
+      <form method="dialog" class="modal__acoes pt-2">
+        <button class="botao btn-glow w-full py-2.5 px-4 rounded-xl text-white font-semibold text-sm">
+          Entendi
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Canvas de Fundo
+    const canvas = document.getElementById('fundo-animado');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let t = 0;
+    const waves = [
+      { amplitude: 90, frequency: 0.005, speed: 0.008, color1: 'rgba(0, 240, 255, 0.45)', color2: 'rgba(2, 132, 199, 0.1)', lineWidth: 4, shadow: '#00f0ff' },
+      { amplitude: 130, frequency: 0.003, speed: 0.006, color1: 'rgba(56, 189, 248, 0.35)', color2: 'rgba(99, 102, 241, 0.1)', lineWidth: 3, shadow: '#38bdf8' },
+      { amplitude: 70, frequency: 0.008, speed: 0.012, color1: 'rgba(147, 197, 253, 0.25)', color2: 'rgba(15, 23, 42, 0.0)', lineWidth: 2, shadow: '#93c5fd' },
+      { amplitude: 160, frequency: 0.002, speed: 0.004, color1: 'rgba(2, 132, 199, 0.3)', color2: 'rgba(7, 11, 20, 0.8)', lineWidth: 5, shadow: '#0284c7' }
+    ];
+
+    const blobs = [
+      { x: 0.25, y: 0.3, radius: 280, color: 'rgba(0, 180, 216, 0.18)', dx: 0.0003, dy: 0.0002 },
+      { x: 0.75, y: 0.65, radius: 320, color: 'rgba(99, 102, 241, 0.15)', dx: -0.0002, dy: -0.0003 },
+      { x: 0.5, y: 0.8, radius: 250, color: 'rgba(56, 189, 248, 0.12)', dx: 0.0004, dy: -0.0002 }
+    ];
+
+    function draw() {
+      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+      bgGradient.addColorStop(0, '#040711');
+      bgGradient.addColorStop(0.5, '#070d1a');
+      bgGradient.addColorStop(1, '#050813');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
+
+      blobs.forEach(blob => {
+        blob.x += blob.dx;
+        blob.y += blob.dy;
+        if (blob.x < 0.1 || blob.x > 0.9) blob.dx *= -1;
+        if (blob.y < 0.1 || blob.y > 0.9) blob.dy *= -1;
+
+        const bx = blob.x * width;
+        const by = blob.y * height;
+        const gradient = ctx.createRadialGradient(bx, by, 0, bx, by, blob.radius);
+        gradient.addColorStop(0, blob.color);
+        gradient.addColorStop(1, 'rgba(6, 9, 17, 0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(bx, by, blob.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      waves.forEach((wave, index) => {
+        ctx.save();
+        ctx.beginPath();
+        const yOffset = height * (0.3 + index * 0.15);
+
+        ctx.moveTo(0, height);
+        for (let x = 0; x <= width; x += 10) {
+          const y = yOffset +
+            Math.sin(x * wave.frequency + t * wave.speed * 60 + index) * wave.amplitude +
+            Math.cos(x * 0.001 + t * 0.002) * (wave.amplitude * 0.5);
+
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        const strokeGrad = ctx.createLinearGradient(0, 0, width, 0);
+        strokeGrad.addColorStop(0, wave.color1);
+        strokeGrad.addColorStop(0.5, wave.shadow);
+        strokeGrad.addColorStop(1, wave.color2);
+
+        ctx.strokeStyle = strokeGrad;
+        ctx.lineWidth = wave.lineWidth;
+        ctx.shadowColor = wave.shadow;
+        ctx.shadowBlur = 20;
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      t += 0.015;
+      requestAnimationFrame(draw);
+    }
+
+    window.onload = function () {
+      draw();
+    };
+  </script>
+</body>
+
+</html>
