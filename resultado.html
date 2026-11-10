@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Seu perfil profissional e as carreiras em tecnologia recomendadas para você." />
+  <title>Seu perfil — CORE</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              cyan: '#38bdf8',
+              neon: '#00f0ff',
+              deep: '#060911',
+              accent: '#6366f1'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-900">
+
+  <!-- Fundo Animado -->
+  <canvas id="fundo-animado"></canvas>
+  <div class="noise-overlay"></div>
+
+  <!-- Cabeçalho -->
+  <header class="topo sticky top-0 z-50 glass-header">
+    <div class="container mx-auto px-4 sm:px-6 py-3.5 max-w-6xl flex items-center justify-between topo__conteudo">
+      <a href="index.html" class="marca flex items-center gap-3.5 group">
+        
+        <!-- Ícone Animado SVG - Reator CORE -->
+        <div class="relative w-11 h-11 flex items-center justify-center p-0.5 rounded-xl bg-slate-950/60 border border-cyan-500/30 shadow-[0_0_20px_rgba(56,189,248,0.25)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.45)] transition-all duration-300">
+          <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9" />
+                <stop offset="60%" stop-color="#0284c7" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient id="coreCenter" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="45%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </radialGradient>
+            </defs>
+
+            <circle class="core-aura" cx="50" cy="50" r="44" fill="url(#coreGlow)" />
+            <circle class="core-ring-1" cx="50" cy="50" r="37" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-dasharray="60 30 15 40" />
+            <circle class="core-ring-2" cx="50" cy="50" r="26" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" stroke-dasharray="35 25 10 30" />
+            <circle class="core-nucleus" cx="50" cy="50" r="13" fill="url(#coreCenter)" />
+            <circle cx="50" cy="50" r="4" fill="#ffffff" />
+          </svg>
+        </div>
+
+        <!-- Nome da Marca "CORE" -->
+        <div class="flex flex-col">
+          <span class="font-extrabold text-2xl tracking-wider bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent group-hover:to-cyan-200 transition-colors drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">
+            CORE
+          </span>
+          <span class="text-[10px] tracking-widest text-cyan-400/80 font-bold uppercase -mt-1">Vocational Tech</span>
+        </div>
+      </a>
+
+      <!-- Botão Novo Mapeamento -->
+      <a href="index.html" class="botao botao--secundario btn-secondary-glow px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2">
+        <i class="fa-solid fa-rotate-left text-xs"></i>
+        <span>Novo mapeamento</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 flex-grow pagina-resultado">
+
+    <!-- Seção de Resultado Com Dados -->
+    <section id="resultado" aria-labelledby="titulo-resultado" class="space-y-8">
+      
+      <!-- Cabeçalho do Perfil -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border-l-4 border-l-cyan-400">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          <i class="fa-solid fa-square-poll-vertical text-cyan-400"></i>
+          Relatório Vocacional CORE Gerado
+        </div>
+
+        <h1 id="titulo-resultado" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Perfil de <span id="nome-usuario" class="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]"></span>
+        </h1>
+
+        <p id="sintese" class="sintese text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+          <!-- Preenchido via JavaScript -->
+        </p>
+      </div>
+
+      <!-- Título de Carreiras Recomendadas -->
+      <div class="flex items-center justify-between pt-4">
+        <h2 class="subtitulo text-2xl font-bold text-white flex items-center gap-3">
+          <i class="fa-solid fa-compass text-cyan-400"></i>
+          Carreiras recomendadas
+        </h2>
+        <span class="text-xs text-slate-400 font-medium hidden sm:inline-block">Ordenado por compatibilidade</span>
+      </div>
+
+      <!-- Lista onde os Cards de Carreira são injetados pelo JS -->
+      <ol id="lista-carreiras" class="lista-carreiras space-y-8"></ol>
+
+    </section>
+
+    <!-- Seção Vazia (Quando não houver dados no formulário) -->
+    <section id="sem-resultado" class="cartao vazio glass-card p-8 sm:p-12 rounded-3xl text-center space-y-6 max-w-xl mx-auto my-12" aria-labelledby="titulo-vazio" hidden>
+      <div class="w-16 h-16 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto text-2xl border border-cyan-500/30 shadow-[0_0_20px_rgba(56,189,248,0.2)]">
+        <i class="fa-solid fa-folder-open"></i>
+      </div>
+
+      <div class="space-y-2">
+        <h1 id="titulo-vazio" class="text-2xl font-bold text-white">Nenhum perfil para mostrar</h1>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Preencha o formulário na página inicial para gerar suas recomendações personalizadas de carreira e roteiro de estudos.
+        </p>
+      </div>
+
+      <div class="pt-4">
+        <a href="index.html" class="botao btn-primary-glow inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold text-sm gap-2">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span>Preencher formulário</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="rodape border-t border-slate-800/80 py-6 glass-header mt-12">
+    <div class="container mx-auto px-4 max-w-6xl text-center text-sm text-slate-400">
+      <p>Projeto acadêmico — Análise e Desenvolvimento de Sistemas.</p>
+    </div>
+  </footer>
+
+  <!-- Modelo de Card Intacto -->
+  <template id="modelo-carreira">
+    <li class="cartao carreira glass-card p-6 sm:p-8 rounded-3xl space-y-6 relative overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(56,189,248,0.25)]">
+      <article class="space-y-6">
+        
+        <!-- Selo de Destaque -->
+        <div class="carreira__selo-container flex justify-between items-center">
+          <p class="carreira__selo inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_12px_rgba(56,189,248,0.3)]" hidden>
+            <i class="fa-solid fa-crown text-amber-300"></i> Melhor combinação
+          </p>
+        </div>
+
+        <!-- Título e Nota de Compatibilidade -->
+        <div class="carreira__topo flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h3 class="carreira__titulo text-2xl font-bold text-white tracking-tight flex items-center gap-2"></h3>
+          <p class="carreira__nota flex items-baseline gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-cyan-500/20">
+            <span class="carreira__percentual text-2xl font-black text-cyan-400"></span>
+            <span class="carreira__legenda text-xs text-slate-300 font-medium">de compatibilidade</span>
+          </p>
+        </div>
+
+        <!-- Barra de Progresso Neon -->
+        <div class="barra bg-slate-900/80 rounded-full h-3.5 w-full overflow-hidden p-0.5 border border-slate-700/60" aria-hidden="true">
+          <span class="barra__nivel block h-full bg-gradient-to-r from-cyan-500 via-sky-400 to-indigo-500 rounded-full transition-all duration-1000"></span>
+        </div>
+
+        <!-- Resumo da Carreira -->
+        <p class="carreira__resumo text-slate-300 text-sm sm:text-base leading-relaxed"></p>
+
+        <!-- Competências-chave -->
+        <div class="space-y-3 pt-2">
+          <h4 class="text-xs uppercase font-extrabold tracking-wider text-cyan-400 flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-cyan-300"></i> Competências-chave
+          </h4>
+          <ul class="chips flex flex-wrap gap-2"></ul>
+        </div>
+
+        <!-- Roteiro de Estudos -->
+        <div class="space-y-3 pt-2">
+          <h4 class="text-xs uppercase font-extrabold tracking-wider text-cyan-400 flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap text-cyan-300"></i> Roteiro de estudos
+          </h4>
+          <ol class="roteiro relative border-l-2 border-cyan-500/30 ml-3 pl-6 space-y-4 my-2 text-slate-200 text-sm sm:text-base"></ol>
+        </div>
+
+      </article>
+    </li>
+  </template>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/dados-exemplo.js"></script>
+  <script src="js/resultado.js"></script>
+  <script>
+    // Canvas de Fundo Animado
+    const canvas = document.getElementById('fundo-animado');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let t = 0;
+    const waves = [
+      { amplitude: 90, frequency: 0.005, speed: 0.008, color1: 'rgba(0, 240, 255, 0.45)', color2: 'rgba(2, 132, 199, 0.1)', lineWidth: 4, shadow: '#00f0ff' },
+      { amplitude: 130, frequency: 0.003, speed: 0.006, color1: 'rgba(56, 189, 248, 0.35)', color2: 'rgba(99, 102, 241, 0.1)', lineWidth: 3, shadow: '#38bdf8' },
+      { amplitude: 70, frequency: 0.008, speed: 0.012, color1: 'rgba(147, 197, 253, 0.25)', color2: 'rgba(15, 23, 42, 0.0)', lineWidth: 2, shadow: '#93c5fd' },
+      { amplitude: 160, frequency: 0.002, speed: 0.004, color1: 'rgba(2, 132, 199, 0.3)', color2: 'rgba(7, 11, 20, 0.8)', lineWidth: 5, shadow: '#0284c7' }
+    ];
+
+    const blobs = [
+      { x: 0.25, y: 0.3, radius: 280, color: 'rgba(0, 180, 216, 0.18)', dx: 0.0003, dy: 0.0002 },
+      { x: 0.75, y: 0.65, radius: 320, color: 'rgba(99, 102, 241, 0.15)', dx: -0.0002, dy: -0.0003 },
+      { x: 0.5, y: 0.8, radius: 250, color: 'rgba(56, 189, 248, 0.12)', dx: 0.0004, dy: -0.0002 }
+    ];
+
+    function draw() {
+      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+      bgGradient.addColorStop(0, '#040711');
+      bgGradient.addColorStop(0.5, '#070d1a');
+      bgGradient.addColorStop(1, '#050813');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
+
+      blobs.forEach(blob => {
+        blob.x += blob.dx;
+        blob.y += blob.dy;
+        if (blob.x < 0.1 || blob.x > 0.9) blob.dx *= -1;
+        if (blob.y < 0.1 || blob.y > 0.9) blob.dy *= -1;
+
+        const bx = blob.x * width;
+        const by = blob.y * height;
+        const gradient = ctx.createRadialGradient(bx, by, 0, bx, by, blob.radius);
+        gradient.addColorStop(0, blob.color);
+        gradient.addColorStop(1, 'rgba(6, 9, 17, 0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(bx, by, blob.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      waves.forEach((wave, index) => {
+        ctx.save();
+        ctx.beginPath();
+        const yOffset = height * (0.3 + index * 0.15);
+
+        ctx.moveTo(0, height);
+        for (let x = 0; x <= width; x += 10) {
+          const y = yOffset +
+            Math.sin(x * wave.frequency + t * wave.speed * 60 + index) * wave.amplitude +
+            Math.cos(x * 0.001 + t * 0.002) * (wave.amplitude * 0.5);
+
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        const strokeGrad = ctx.createLinearGradient(0, 0, width, 0);
+        strokeGrad.addColorStop(0, wave.color1);
+        strokeGrad.addColorStop(0.5, wave.shadow);
+        strokeGrad.addColorStop(1, wave.color2);
+
+        ctx.strokeStyle = strokeGrad;
+        ctx.lineWidth = wave.lineWidth;
+        ctx.shadowColor = wave.shadow;
+        ctx.shadowBlur = 20;
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      t += 0.015;
+      requestAnimationFrame(draw);
+    }
+
+    window.onload = function () {
+      draw();
+    };
+  </script>
+</body>
+
+</html>
